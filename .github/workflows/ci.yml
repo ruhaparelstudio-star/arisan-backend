@@ -1,0 +1,23 @@
+name: CI
+on:
+  push:
+    branches: ["**"]
+  pull_request:
+    branches: [main, develop]
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: "npm"
+      - run: npm ci
+      - run: npm run build
+      - name: No ADMIN_SECRET in client bundle
+        run: |
+          if grep -r "ADMIN_SECRET_KEY" .next/static/ 2>/dev/null; then
+            echo "ERROR: ADMIN_SECRET_KEY bocor ke client bundle!"
+            exit 1
+          fi
