@@ -27,7 +27,7 @@
 | Sesi | Feature | Status |
 |------|---------|--------|
 | AD-0 | Setup Scaffold | `[x]` |
-| AD-1 | Layout & Navigasi | `[ ]` |
+| AD-1 | Layout & Navigasi | `[x]` |
 | AD-2 | Overview Dashboard | `[ ]` |
 | AD-3 | User Management | `[ ]` |
 | AD-4 | Group Monitoring | `[ ]` |
@@ -63,27 +63,29 @@
 ## AD-1 — Layout & Navigasi
 
 ```
-[ ] app/(admin)/layout.tsx — sidebar + topbar shell
-[ ] components/layout/Sidebar.tsx
-    [ ] Logo + nama app di atas
-    [ ] Nav items: Overview, Users, Groups, OTP Monitor, System
-    [ ] Active state per route (warna emerald)
-    [ ] Collapsed state opsional
-[ ] components/layout/TopBar.tsx
-    [ ] Judul halaman (dinamis per route)
-    [ ] Tombol refresh (trigger re-fetch manual)
-[ ] components/ui/StatCard.tsx
-[ ] components/ui/Badge.tsx
-[ ] components/ui/AlertBanner.tsx
-[ ] components/ui/DataTable.tsx
-[ ] components/ui/Pagination.tsx
-[ ] components/ui/SkeletonRow.tsx
-[ ] components/ui/ConfirmModal.tsx
-[ ] Routing: semua halaman redirect dengan benar dari sidebar
+[x] app/(admin)/layout.tsx — sidebar + topbar shell
+[x] components/layout/Sidebar.tsx
+    [x] Logo + nama app di atas
+    [x] Nav items: Overview, Users, Groups, OTP Monitor, System
+    [x] Active state per route (usePathname)
+    [ ] Collapsed state opsional (ditunda — belum dalam scope)
+[x] components/layout/TopBar.tsx
+    [x] Judul halaman (dinamis per route)
+    [x] Tombol refresh (router.refresh())
+[x] components/ui/StatCard.tsx
+[x] components/ui/Badge.tsx
+[x] components/ui/AlertBanner.tsx
+[x] components/ui/DataTable.tsx
+[x] components/ui/Pagination.tsx
+[x] components/ui/SkeletonRow.tsx
+[x] components/ui/ConfirmModal.tsx
+[x] Routing: semua halaman dengan next/link + redirect / → /overview
 ```
 
 **Catatan:**
-> _(isi setelah sesi)_
+> Sesi AD-1 selesai 2026-05-30. SPA hash-based dikonversi ke Next.js App Router.
+> Sidebar gunakan Next.js Link + usePathname untuk active state. TopBar dengan router.refresh().
+> 7 komponen UI reusable di components/ui/. CI pass (build + secret check).
 
 ---
 
